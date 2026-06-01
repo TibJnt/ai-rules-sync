@@ -1,0 +1,32 @@
+{
+  "name": "ai-rules-sync",
+  "version": "0.1.0",
+  "description": "Write your AI coding rules once. Sync them everywhere.",
+  "type": "module",
+  "bin": {
+    "ai-rules-sync": "bin/ai-rules-sync.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "lint": "node --check bin/ai-rules-sync.js && node --check src/cli.js && node --check src/sync.js && node --check src/targets.js",
+    "test": "node --test"
+  },
+  "keywords": [
+    "ai",
+    "rules",
+    "claude",
+    "codex",
+    "cursor",
+    "copilot"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}
