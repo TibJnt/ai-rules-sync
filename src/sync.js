@@ -44,7 +44,7 @@ export async function syncRules(options) {
 export async function watchRules(options) {
   const { cwd, only, onRun, onError } = options;
   const sourcePath = path.join(cwd, SOURCE_FILE);
-  await runWatchedSync({ cwd, only, onRun, onError });
+  onRun(await syncRules({ cwd, only }));
 
   let debounceTimer;
   const watcher = watch(sourcePath, { persistent: true }, () => {
