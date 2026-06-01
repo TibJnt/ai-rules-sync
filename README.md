@@ -2,6 +2,8 @@
 
 Write your AI coding rules once. Sync them everywhere.
 
+CLI tool that lets developers write AI coding rules once, then sync them to all the different AI coding tools.
+
 Generate rule files for Claude Code, Codex, Cursor, GitHub Copilot, and other AI coding tools from a single `.ai-rules.md` file.
 
 ## Install
