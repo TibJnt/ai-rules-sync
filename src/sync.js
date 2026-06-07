@@ -29,9 +29,8 @@ export async function syncRules(options) {
       continue;
     }
 
-    await mkdir(path.dirname(absoluteTargetPath), { recursive: true });
-    await writeFile(absoluteTargetPath, sourceContent, "utf8");
-    results.push({ target, status: "generated" });
+    const status = await writeTargetIfChanged(absoluteTargetPath, sourceContent);
+    results.push({ target, status });
   }
 
   return {
@@ -91,4 +90,16 @@ async function getCheckStatus(filePath, sourceContent) {
 
     throw error;
   }
+}
+
+async function writeTargetIfChanged(filePath, sourceContent) {
+  const status = await getCheckStatus(filePath, sourceContent);
+
+  if (status === "up-to-date") {
+    return status;
+  }
+
+  await mkdir(path.dirname(filePath), { recursive: true });
+  await writeFile(filePath, sourceContent, "utf8");
+  return "generated";
 }
